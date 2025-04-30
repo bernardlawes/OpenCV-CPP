@@ -26,13 +26,13 @@ BUILD & RUN
 mkdir build
 cd build
 
-cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=D:/Repositories/Apps/C++/❌YOUR-PROJECT-FOLDER-NAME❌/install -DCMAKE_TOOLCHAIN_FILE=D:/Library/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=D:/Repositories/Apps/C++/❌PROJECT-FOLDER-NAME❌/install -DCMAKE_TOOLCHAIN_FILE=D:/Library/vcpkg/scripts/buildsystems/vcpkg.cmake
 cmake --build . --config Debug
 cmake --install . --config Debug
 
 or
 
-cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=D:/Repositories/Apps/C++/❌YOUR-PROJECT-FOLDER-NAME❌/install -DCMAKE_TOOLCHAIN_FILE=D:/Library/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=D:/Repositories/Apps/C++/❌PROJECT-FOLDER-NAME❌/install -DCMAKE_TOOLCHAIN_FILE=D:/Library/vcpkg/scripts/buildsystems/vcpkg.cmake
 cmake --build . --config Release
 cmake --install . --config Release
 
