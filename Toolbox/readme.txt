@@ -1,6 +1,6 @@
 ﻿ABOUT:
 ---------------------------------------------------------------------
-Modular class-based design Template for a Standalone Project
+Modular OpenCV Capabilities Platform (non-UI)
 CMake setup ready for vcpkg + OpenCV integration
 
 
