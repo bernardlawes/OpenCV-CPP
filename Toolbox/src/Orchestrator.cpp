@@ -1,12 +1,15 @@
 // Orchestrator.cpp
 #include "Orchestrator.hpp"
 #include "ColorDetectorCapability.hpp"
-#include "MorphologicalCapability.hpp"
+#include "MorphologyCapability.hpp"
+#include "ImageReshapeCapability.hpp"
 #include "CapabilityContext.hpp"
 
 Orchestrator::Orchestrator() {
     capabilities["color"] = std::make_shared<ColorDetectorCapability>();
-    capabilities["morph"] = std::make_shared<MorphologicalCapability>();
+    capabilities["morph"] = std::make_shared<MorphologyCapability>();
+    capabilities["reshape"] = std::make_shared<ImageReshapeCapability>();
+
     // Add more capabilities here as you grow
 }
 

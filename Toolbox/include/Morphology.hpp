@@ -1,14 +1,15 @@
 #pragma once
 #include <opencv2/opencv.hpp>
 
-struct MorphologicalResult {
+struct MorphologyResult {
     cv::Mat blurred;
     cv::Mat edges;
     cv::Mat dilated;
     cv::Mat eroded;
+    cv::Mat grayed;
 };
 
-class MorphologicalProcessor {
+class MorphologyProcessor {
 public:
-    MorphologicalResult process(const cv::Mat& image);
+    MorphologyResult process(const cv::Mat& image);
 };

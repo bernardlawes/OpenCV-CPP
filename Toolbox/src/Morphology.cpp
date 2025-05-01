@@ -1,9 +1,15 @@
-#include "MorphologicalProcessor.hpp"
+#include "Morphology.hpp"
 
-MorphologicalResult MorphologicalProcessor::process(const cv::Mat& image) {
-    MorphologicalResult result;
+using namespace cv;
+using namespace std;
+
+MorphologyResult MorphologyProcessor::process(const cv::Mat& image) {
+    
+    MorphologyResult result;
 
     cv::GaussianBlur(image, result.blurred, cv::Size(5, 5), 1.5);
+
+    cv::cvtColor(image, result.grayed, COLOR_BGR2GRAY);
 
     cv::Mat gray;
     cv::cvtColor(result.blurred, gray, cv::COLOR_BGR2GRAY);
@@ -14,4 +20,5 @@ MorphologicalResult MorphologicalProcessor::process(const cv::Mat& image) {
     cv::erode(result.dilated, result.eroded, kernel);
 
     return result;
+    
 }
