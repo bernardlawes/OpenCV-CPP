@@ -42,18 +42,18 @@ Each mini-project is self-contained and demonstrates a key concept of computer v
 
 
 ## 📂 Folder Structure
-Toolbox/
-├── ImageDisplay/
-├── ResizeCrop/
-├── Annotating/
-├── PerspectiveWarp/
-├── ColorDetection/
-├── ContourMapping/
-├── FaceDetection/
-├── DocumentScanner/
-├── VirtualPaint/
-├── LicensePlateDetection/
-└── ...
+Toolbox/<br/>
+├── ImageDisplay/<br/>
+├── ResizeCrop/<br/>
+├── Annotating/<br/>
+├── PerspectiveWarp/<br/>
+├── ColorDetection/<br/>
+├── ContourMapping/<br/>
+├── FaceDetection/<br/>
+├── DocumentScanner/<br/>
+├── VirtualPaint/<br/>
+├── LicensePlateDetection/<br/>
+└── ...<br/>
 
 
 ## 🚀 Getting Started
