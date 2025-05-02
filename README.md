@@ -38,7 +38,7 @@ Each mini-project is self-contained and demonstrates a key concept of computer v
 
 - C++17+
 - OpenCV 4.x
-- Visual Studio / CMake / vcpkg
+- Visual Studio Code / CMake / vcpkg
 
 
 ## 📂 Folder Structure
