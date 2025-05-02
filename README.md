@@ -22,11 +22,24 @@ Each mini-project is self-contained and demonstrates a key concept of computer v
 | 🖌 **Virtual Paint**       | Track color objects to "paint" on a virtual canvas |
 | 🚗 **License Plate Detection** | Identify and isolate vehicle license plates |
 
+## 🧭 Roadmap
+✅ Add real-time object tracking
+
+>>  Optical Character Recognition (OCR)
+
+>>  Barcode & QR code detection
+
+>>  Gesture recognition
+
+>>  Deep learning-based object detection (YOLO, SSD)
+
+
 ## 🔧 Technologies
 
 - C++17+
 - OpenCV 4.x
 - Visual Studio / CMake / vcpkg
+
 
 ## 📂 Folder Structure
 Toolbox/
@@ -50,24 +63,15 @@ Toolbox/
    git clone https://github.com/yourusername/CPP-OpenCV-Toolbox.git
    cd CPP-OpenCV-Toolbox
 
-🧭 Roadmap
-✅ Add real-time object tracking
 
->>  Optical Character Recognition (OCR)
-
->>  Barcode & QR code detection
-
->>  Gesture recognition
-
->>  Deep learning-based object detection (YOLO, SSD)
-
-
-💡 Contributing
+## 💡 Contributing
 Got an idea or improvement? Feel free to fork the repo and open a PR!
 
-📝 License
+
+## 📝 License
 This project is licensed under the MIT License — see the LICENSE file for details.
 
-👋 Author
+
+## 👋 Author
 Bernard Lawes
 <a data-start="2622" data-end="2663" rel="noopener" target="_new" class="" href="https://github.com/bernardlawes">GitHub</a> • <a data-start="2666" data-end="2718" rel="noopener" target="_new" class="" href="https://www.linkedin.com/in/bernardlawes">LinkedIn</a>
