@@ -53,13 +53,14 @@ Toolbox/
 🧭 Roadmap
 ✅ Add real-time object tracking
 
-⏳ Optical Character Recognition (OCR)
+>>  Optical Character Recognition (OCR)
 
-⏳ Barcode & QR code detection
+>>  Barcode & QR code detection
 
-⏳ Gesture recognition
+>>  Gesture recognition
 
-⏳ Deep learning-based object detection (YOLO, SSD)
+>>  Deep learning-based object detection (YOLO, SSD)
+
 
 💡 Contributing
 Got an idea or improvement? Feel free to fork the repo and open a PR!
@@ -67,3 +68,6 @@ Got an idea or improvement? Feel free to fork the repo and open a PR!
 📝 License
 This project is licensed under the MIT License — see the LICENSE file for details.
 
+👋 Author
+Bernard Lawes
+GitHub • <a data-start="2666" data-end="2718" rel="noopener" target="_new" class="" href="https://www.linkedin.com/in/bernardlawes">LinkedIn</a>
