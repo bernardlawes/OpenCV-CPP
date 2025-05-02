@@ -63,7 +63,6 @@ Toolbox/<br/>
    git clone https://github.com/yourusername/CPP-OpenCV-Toolbox.git
    cd CPP-OpenCV-Toolbox
 
-
 ## 💡 Contributing
 Got an idea or improvement? Feel free to fork the repo and open a PR!
 
