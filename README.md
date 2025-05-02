@@ -70,4 +70,4 @@ This project is licensed under the MIT License — see the LICENSE file for deta
 
 👋 Author
 Bernard Lawes
-GitHub • <a data-start="2666" data-end="2718" rel="noopener" target="_new" class="" href="https://www.linkedin.com/in/bernardlawes">LinkedIn</a>
+<a data-start="2622" data-end="2663" rel="noopener" target="_new" class="" href="https://github.com/bernardlawes">GitHub</a> • <a data-start="2666" data-end="2718" rel="noopener" target="_new" class="" href="https://www.linkedin.com/in/bernardlawes">LinkedIn</a>
