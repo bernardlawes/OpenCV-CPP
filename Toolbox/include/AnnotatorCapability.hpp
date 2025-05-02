@@ -11,7 +11,7 @@ public:
         cv::Mat annootated = processor.DrawAnnotations(image);
         DisplayManager display;
     
-        cv::Size displayDims(480, 300);
+        cv::Size displayDims(900, 600);
     
         if (CapabilityContext::mode == "--side") {
             display.show("Original", image, displayDims, cv::Point(0, 0));
