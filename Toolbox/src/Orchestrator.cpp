@@ -5,6 +5,7 @@
 #include "ImageReshapeCapability.hpp"
 #include "AnnotatorCapability.hpp"
 #include "WarpPerspectiveCapability.hpp"
+#include "TracerCapability.hpp"
 #include "CapabilityContext.hpp"
 
 Orchestrator::Orchestrator() {
@@ -13,6 +14,7 @@ Orchestrator::Orchestrator() {
     capabilities["reshape"] = std::make_shared<ImageReshapeCapability>();
     capabilities["annotate"] = std::make_shared<AnnotatorCapability>();
     capabilities["warp"] = std::make_shared<WarpPerspectiveCapability>();
+    capabilities["trace"] = std::make_shared<TracerCapability>();
 
     // Add more capabilities here as you grow
 }
