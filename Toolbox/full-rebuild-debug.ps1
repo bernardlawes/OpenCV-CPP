@@ -52,7 +52,7 @@ if (-not $targetDir) {
 }
 
 # ---- Copy Required DLLs ----
-# List of DLLs that follow suffix rule
+# List of DLLs that follow suffix rule and has both versions
 $dllsWithSuffix = @(
     "opencv_core4",
     "opencv_imgproc4",
@@ -63,7 +63,7 @@ $dllsWithSuffix = @(
     
 )
 
-# List of DLLs that never change (no 'd' suffix even in Debug)
+# List of DLLs that never change (no 'd' suffix even in Debug or there is only version with 'd' suffix)
 $dllsFixedName = @(
     "jpeg62",
     "zlibd1",
@@ -74,8 +74,16 @@ $dllsFixedName = @(
     "libsharpyuv",
     "liblzma",
     "tiffd",
-    "libpng16d"
+    "libpng16d",
+    "opencv_objdetect4d", #necessary for object detection (haarcascade)
+    "opencv_calib3d4d",   #necessary for object detection (haarcascade)
+    "opencv_features2d4d",#necessary for object detection (haarcascade)
+    "opencv_flann4d",     #necessary for object detection (haarcascade)
+    "libprotobufd",       #necessary for object detection (haarcascade)
+    "abseil_dll"          #necessary for object detection (haarcascade)
 )
+
+
 
 
 foreach ($dll in $dllsWithSuffix) {

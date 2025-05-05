@@ -6,6 +6,8 @@
 #include "AnnotatorCapability.hpp"
 #include "WarpPerspectiveCapability.hpp"
 #include "TracerCapability.hpp"
+#include "FaceDetectorCapability.hpp"
+#include "VideoColorDetectorCapability.hpp"
 #include "CapabilityContext.hpp"
 
 Orchestrator::Orchestrator() {
@@ -15,6 +17,8 @@ Orchestrator::Orchestrator() {
     capabilities["annotate"] = std::make_shared<AnnotatorCapability>();
     capabilities["warp"] = std::make_shared<WarpPerspectiveCapability>();
     capabilities["trace"] = std::make_shared<TracerCapability>();
+    capabilities["face"] = std::make_shared<FaceDetectorCapability>();
+    capabilities["videocolor"] = std::make_shared<VideoColorDetectorCapability>();
 
     // Add more capabilities here as you grow
 }

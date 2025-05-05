@@ -6,15 +6,36 @@ TraceResult Tracer::Trace(const cv::Mat& img){
     TraceResult result;
     cv::Mat markup = img.clone();
     cv::Mat greyed;
+    
 
     // findContours(), but it only supports single-channel grayscale (CV_8UC1) images, unless you're using RETR_FLOODFILL or RETR_CCOMP
     cvtColor(markup, greyed, cv::COLOR_BGR2GRAY);  // Convert to grayscale
+
+    // Calculate mean brightness
+    double meanBrightness = cv::mean(greyed)[0];
+
+    // Invert if background is likely white
+    if (meanBrightness > 127) {
+        cv::bitwise_not(greyed, greyed);  // invert to make shapes white on black
+    }
+
+    cv::Mat binary;
+
+    // Threshold or adaptive threshold
+    cv::threshold(greyed, binary, 50, 255, cv::THRESH_BINARY);
+
+
+    cv::imshow("Gray", greyed);
+    cv::waitKey(0);
+    cv::imshow("Binary", binary);
+    cv::waitKey(0);
+
 
     std::vector<std::vector<cv::Point>>contours; // contours are vector of vectors of points
 	std::vector<cv::Vec4i> heirarchy; // 4 element vector of integers
 
     // find the contours
-	findContours(greyed, contours, heirarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);  // Retrieves only outermost contours
+	findContours(binary, contours, heirarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);  // Retrieves only outermost contours
     //findContours(markup, contours, heirarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);  // Retrieves all contours without hierarchy
     //findContours(markup, contours, heirarchy, cv::RETR_TREE, cv::CHAIN_APPROX_SIMPLE);  // Retrieves all contours with full hierarchy
     //findContours(markup, contours, heirarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE); // Retrieves all contours in a 2-level hierarchy (parent/child)
@@ -27,7 +48,7 @@ TraceResult Tracer::Trace(const cv::Mat& img){
 	drawContours(markup, contours, -1, cv::Scalar(0, 0, 255), 2); // -1 to draw all contours
 
     
-    // approximated contours | a 2D vector (a vector of vectors) 
+    // container for approximated (simplified) contours | a 2D vector (a vector of vectors) 
     std::vector<std::vector<cv::Point>> approxCon(ccount); // the number of points will be less than or equal to the number of points in the original contour
 
     std::cout << "Contour Count: " << ccount << std::endl;
@@ -49,11 +70,28 @@ TraceResult Tracer::Trace(const cv::Mat& img){
     return result;
 }
 
-void Tracer::Screen(TraceResult& input, const std::vector<int>& thresholds, const bool& categorize){
+/// @brief 
+/// 
+/// @param input 
+/// @param thresholds 
+
+void Tracer::Filter(TraceResult& input, const std::vector<int>& thresholds){
 
     float sensitivity = 0.02; // used in approximation of shape; the lower the value, the more sensitive the funcition
     bool  simple = true;
-    std::vector<std::vector<cv::Point>> approxCon(input.count);
+    std::vector<std::vector<cv::Point>> approxContours(input.count);
+    cv::Scalar ccolor = cv::Scalar(0,255,255);
+    cv::Scalar tcolor = cv::Scalar(255,255,255);
+    cv::Mat greyed;
+
+        // Calculate mean brightness
+        cvtColor(input.curated, greyed, cv::COLOR_BGR2GRAY);  // Convert to grayscale
+        double meanBrightness = cv::mean(greyed)[0];
+
+        // Invert if background is likely white
+        if (meanBrightness > 127) {
+            tcolor = cv::Scalar(0,0,0);
+        }
 
     std::cout << "Thresholds: " << thresholds[0] << thresholds[1] << std::endl;
 
@@ -67,9 +105,6 @@ void Tracer::Screen(TraceResult& input, const std::vector<int>& thresholds, cons
         std::string                         shape = "undefined";
         cv::Point                           centroid;
         std::vector<cv::Point>              contour;
-        cv::Scalar                          contourColor = cv::Scalar(0,255,255);
-        //std::vector<std::vector<cv::Point>> approxContours;
-        std::vector<cv::Point>              approxCon;
         cv::Rect                            bbox;
 
 
@@ -79,65 +114,55 @@ void Tracer::Screen(TraceResult& input, const std::vector<int>& thresholds, cons
         // calculate area
         area = cv::contourArea(contour);
 
-        std::cout << "Area: " << area << std::endl;
-
         if (area > thresholds[0] && area < thresholds[1]){
-            
-            std::cout << "Processing: " << i << std::endl;
 
             // get perimeter
             perimeter = cv::arcLength(contour, true);
 
             
             // get approximate contour; useful for determining shape; the smaller the multiplication factor, the more sensitve it is to finding points
-            cv::approxPolyDP(contour, approxCon, sensitivity * perimeter, true);
-            segments = approxCon.size();
+            cv::approxPolyDP(contour, approxContours[i], sensitivity * perimeter, true);
 
-            input.approxContours[i] = approxCon;
-            
-            // draw simple or actual contour based on option of the contour specified by i
-            if (simple){
-                cv::drawContours(input.curated, input.approxContours, i, cv::Scalar(0,255,255),3 );
-                std::cout << "Drew Contour: " << i << std::endl;
-            } else {
-                cv::drawContours(input.curated, input.contours, i, contourColor,3 );
-            }
-            
-            // determine bounding box
-            bbox = cv::boundingRect(approxCon);
-            centroid = GetCentroid(bbox);
-            shape = (categorize) ? Categorize(approxCon) : "";
+            segments    = approxContours[i].size();
+            bbox        = cv::boundingRect(approxContours[i]);
+            centroid    = GetCentroid(bbox);
+            shape       = GetShape(approxContours[i]);
 
             // update output
-            input.areas[i] = area;
-            input.perimeters[i] = perimeter;
-            input.aspects[i] = aspect;
-            input.approxContours[i] = approxCon;
-            input.bbox[i] = bbox;
-            input.segments[i] = segments;
-            input.midpoints[i] = centroid;
-            input.shapes[i] = shape;
+            input.approxContours[i] = approxContours[i];
+            input.areas[i]          = area;
+            input.perimeters[i]     = perimeter;
+            input.aspects[i]        = aspect;
+            input.bbox[i]           = bbox;
+            input.segments[i]       = segments;
+            input.midpoints[i]      = centroid;
+            input.shapes[i]         = shape;
 
-            if (categorize){
-                putText(input.curated, shape, centroid, cv::FONT_HERSHEY_DUPLEX, 1.0, cv::Scalar(255, 255, 255), 2);
-            }
+            // either draw simple or actual contour (option based) of the specified contour by i
+            (simple) ? cv::drawContours(input.curated, input.approxContours, i, ccolor,3 ) : cv::drawContours(input.curated, input.contours, i, ccolor,3 );
+
+            // write shape name over the shape
+            putText(input.curated, shape, cv::Point(centroid.x-50,centroid.y), cv::FONT_HERSHEY_DUPLEX, 0.5, tcolor, 1);
 
         }
 
     }
 
+    // either draw simple or actual contour (option based) of the specified contour by i [This version draws all at once]
+    //(simple) ? cv::drawContours(input.curated, input.approxContours, -1, ccolor,3 ) : cv::drawContours(input.curated, input.contours, -1, ccolor,3 );
+
 }
 
-std::string Tracer::Categorize(const std::vector<cv::Point>& approxContour){
+std::string Tracer::GetShape(const std::vector<cv::Point>& approxContour){
 
     std::string shape = "";
 
     switch (approxContour.size()) {
         case 3:
-            shape = "TRI";
+            shape = "Triangle";
             break;
         case 4:
-            shape = "TRAP";
+            shape = "Trapezoid";
             break;
         default:
             shape = "Round";

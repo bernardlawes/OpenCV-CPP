@@ -8,12 +8,11 @@ class TracerCapability : public Capability {
 public:
     void execute(const cv::Mat& image) override{
 
-        std::vector<int> thresholds{5000, 30000};
+        std::vector<int> thresholds{3000, 30000};
 
         Tracer processor;
         TraceResult result = processor.Trace(image);
-        processor.Screen(result, thresholds,true);
-        //cv::Mat markup = processor.Sketch(image, contours);
+        processor.Filter(result, thresholds);
 
         DisplayManager display;
     
@@ -27,9 +26,9 @@ public:
         } else {
             display.show("Original", image, displayDims, std::nullopt);
             cv::waitKey(0);
-            //display.show("Annotated", annotated, displayDims, std::nullopt);
+            display.show("Markup", result.markup, displayDims, std::nullopt);
             cv::waitKey(0);
-            //display.show("Warped", warped, cv::Size(250,350), std::nullopt);
+            display.show("Curated", result.curated, displayDims, std::nullopt);
             cv::waitKey(0);
         }
     }
