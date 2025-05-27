@@ -12,7 +12,7 @@ public:
         cv::Mat warped = processor.Orthogonize(image);
         DisplayManager display;
     
-        cv::Size displayDims(800, 600);
+        cv::Size displayDims(600, 400);
     
         if (CapabilityContext::mode == "--side") {
             display.show("Original", image, displayDims, cv::Point(0, 0));
