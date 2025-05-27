@@ -11,8 +11,12 @@ Template-Standalone/
 │   ├── project1.hpp
 ├── src/                  # Source files (.cpp)
 │   ├── project1.cpp
-├── build/				  # <-- Build output
-│   └── Template-Standalone.exe
+├── build/				        # <-- Build output
+│   └── CMakeFiles
+│   └── Debug
+│   └── x64
+├── install/				        # <-- Executable and DLLs
+│   └── CVSandbox.exe
 ├── main.cpp
 ├── CMakeLists.txt
 ├── CMakeSettings.json
