@@ -1,4 +1,4 @@
-//2025-06-02 03:21:01
+//2025-06-02 03:33:40
 
 #include <iostream>
 
@@ -7,5 +7,3 @@ int main() {
     return 0;
 }
 
-
--ExecutionPolicy Bypass -File "D:\Repositories\Library\C++\Siloed\OpenCV-Toolbox\git.ps1" *> "C:\Logs\git-task-output.txt"
