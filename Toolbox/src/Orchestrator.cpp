@@ -9,6 +9,7 @@
 #include "FaceDetectorCapability.hpp"
 #include "VideoColorDetectorCapability.hpp"
 #include "VideoColorTrackerCapability.hpp"
+#include "ScannerCapability.hpp"
 #include "CapabilityContext.hpp"
 
 Orchestrator::Orchestrator() {
@@ -21,6 +22,7 @@ Orchestrator::Orchestrator() {
     capabilities["face"] = std::make_shared<FaceDetectorCapability>();
     capabilities["videocolor"] = std::make_shared<VideoColorDetectorCapability>();
     capabilities["videocolortracker"] = std::make_shared<VideoColorTrackerCapability>();
+    capabilities["scanner"] = std::make_shared<ScannerCapability>();
 
     // Add more capabilities here as you grow
 }
