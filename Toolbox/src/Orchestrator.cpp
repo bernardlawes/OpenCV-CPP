@@ -12,6 +12,7 @@
 #include "ScannerCapability.hpp"
 #include "CapabilityContext.hpp"
 
+
 Orchestrator::Orchestrator() {
     capabilities["color"] = std::make_shared<ColorDetectorCapability>();
     capabilities["morph"] = std::make_shared<MorphologyCapability>();
@@ -24,7 +25,7 @@ Orchestrator::Orchestrator() {
     capabilities["videocolortracker"] = std::make_shared<VideoColorTrackerCapability>();
     capabilities["scanner"] = std::make_shared<ScannerCapability>();
 
-    // Add more capabilities here as you grow
+    // Adding more capabilities here as usecases grow
 }
 
 void Orchestrator::run(const std::string& abilityName, const cv::Mat& image, const std::string& mode) {

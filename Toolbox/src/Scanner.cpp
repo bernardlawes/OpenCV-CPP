@@ -141,7 +141,7 @@ std::vector<cv::Point> Scanner::Trace(const cv::Mat& img){
 std::vector<cv::Point> Scanner::Reorder(const std::vector<cv::Point>& points) {
     
     if (points.size() < 4) {
-        std::cerr << "[ERROR] Not enough points to reorder." << std::endl;
+        //std::cerr << "[ERROR] Not enough points to reorder." << std::endl;
         return {};
     }
 
