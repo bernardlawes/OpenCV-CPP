@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << "The goodies are in the toolbox" << std::endl;
     return 0;
 }
 
