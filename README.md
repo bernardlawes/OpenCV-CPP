@@ -1,29 +1,29 @@
-# 🧰 C++ OpenCV Toolbox
+# C++ OpenCV Toolbox
 
 A growing collection of powerful, hands-on OpenCV examples in modern C++.  
 This toolbox covers the building blocks of computer vision — from simple image manipulation to real-time detection tasks.
 
-## ✨ Features
+## Features
 
 Each mini-project is self-contained and demonstrates a key concept of computer vision:
 
 | Project                     | Description |
 |----------------------------|-------------|
-| 📷 **Image Display**       | Load and show images using OpenCV's basic GUI |
-| 🔍 **Image Resizing**      | Resize images while maintaining aspect ratios |
-| ✂️ **Image Cropping**      | Extract regions of interest from images |
-| 🖍 **Annotating**          | Draw shapes and text for image labeling |
-| 📐 **Warp Perspective**    | Transform angled views into top-down perspectives |
-| 🎨 **Color Detection (Image)** | Detect specific colors in still images using HSV filtering |
-| 📹 **Color Detection (Video)** | Real-time color detection from webcam or video feed |
-| 🧱 **Contour Mapping**     | Detect and outline shapes using contours |
-| 😀 **Face Detection**      | Real-time face detection using Haar cascades |
-| 🧾 **Document Scanner**    | Detect and straighten a document from a camera frame |
-| 🖌 **Virtual Paint**       | Track color objects to "paint" on a virtual canvas |
-| 🚗 **License Plate Detection** | Identify and isolate vehicle license plates |
+| **Image Display**       | Load and show images using OpenCV's basic GUI |
+| **Image Resizing**      | Resize images while maintaining aspect ratios |
+| **Image Cropping**      | Extract regions of interest from images |
+| **Annotating**          | Draw shapes and text for image labeling |
+| **Warp Perspective**    | Transform angled views into top-down perspectives |
+| **Color Detection (Image)** | Detect specific colors in still images using HSV filtering |
+| **Color Detection (Video)** | Real-time color detection from webcam or video feed |
+| **Contour Mapping**     | Detect and outline shapes using contours |
+| **Face Detection**      | Real-time face detection using Haar cascades |
+| **Document Scanner**    | Detect and straighten a document from a camera frame |
+| **Virtual Paint**       | Track color objects to "paint" on a virtual canvas |
+| **License Plate Detection** | Identify and isolate vehicle license plates |
 
-## 🧭 Roadmap
-✅ Add real-time object tracking
+## Roadmap
+Add real-time object tracking
 
 >>  Optical Character Recognition (OCR)
 
@@ -41,7 +41,7 @@ Each mini-project is self-contained and demonstrates a key concept of computer v
 - Visual Studio Code / CMake / vcpkg
 
 
-## 📂 Folder Structure
+## Folder Structure
 Toolbox/<br/>
 ├── ImageDisplay/<br/>
 ├── ResizeCrop/<br/>
@@ -56,18 +56,18 @@ Toolbox/<br/>
 └── ...<br/>
 
 
-## 🚀 Getting Started
+## Getting Started
 
 1. Clone the repository  
    ```bash
    git clone https://github.com/yourusername/CPP-OpenCV-Toolbox.git
    cd CPP-OpenCV-Toolbox
 
-## 💡 Contributing
+## Contributing
 Got an idea or improvement? Feel free to fork the repo and open a PR!
 
 
-## 📝 License
+## License
 This project is licensed under the MIT License — see the LICENSE file for details.
 
 
