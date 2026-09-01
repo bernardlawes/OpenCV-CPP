@@ -71,6 +71,6 @@ Got an idea or improvement? Feel free to fork the repo and open a PR!
 This project is licensed under the MIT License — see the LICENSE file for details.
 
 
-## 👋 Author
+## Author
 Bernard Lawes
 <a data-start="2622" data-end="2663" rel="noopener" target="_new" class="" href="https://github.com/bernardlawes">GitHub</a> • <a data-start="2666" data-end="2718" rel="noopener" target="_new" class="" href="https://www.linkedin.com/in/bernardlawes">LinkedIn</a>
